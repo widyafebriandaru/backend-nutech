@@ -1,0 +1,12 @@
+// CREATE PRODUCT
+
+POST http://localhost:4000/products
+Content-Type: application/json
+
+{
+    "nama_barang": "BUKU",
+    "foto_barang": "tes",
+    "harga_beli": "100.000",
+    "harga_jual": "200.000",
+    "stok": "50"
+}
