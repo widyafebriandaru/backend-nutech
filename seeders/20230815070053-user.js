@@ -1,4 +1,14 @@
-"use strict";
+const argon2 = require('argon2');
+
+const hashPassword = async (password) => {
+  try {
+    const hashedPassword = await argon2.hash(password);
+    return hashedPassword;
+  } catch (error) {
+    console.error('Error hashing password:', error);
+    throw error;
+  }
+};
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -12,19 +22,15 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
+    const adminPassword = '111111';
+    const hashedAdminPassword = await hashPassword(adminPassword);
     await queryInterface.bulkInsert("users", [
       {
         name: "Daru",
-        password: "gunungsulah",
+        password: hashedAdminPassword,
         email: "febriandaru@gmail.com",
         accountType: "Admin",
-      },
-      {
-        name: "Febrian",
-        password: "gunungsulah",
-        email: "febriandaru1@gmail.com",
-        accountType: "Pegawai",
-      },
+      }
     ]);
   },
 

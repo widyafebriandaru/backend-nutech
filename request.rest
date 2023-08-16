@@ -4,7 +4,7 @@ POST http://localhost:3002/products
 Content-Type: application/json
 
 {
-    "nama_barang": "BUKU3",
+    "nama_barang": "BUKUu",
     "foto_barang": "tes",
     "harga_beli": "100.000",
     "harga_jual": "200.000",
@@ -16,3 +16,69 @@ Content-Type: application/json
 
 GET http://localhost:3002/products
 Content-Type: application/json
+
+###
+// DELETE PRODUCT
+
+DELETE http://localhost:3002/products/9
+
+//------------------------------------------PRODUCT END
+
+###
+//CREATE USER
+POST http://localhost:3002/users
+Content-Type: application/json
+
+{
+    "name": "testadmin1",
+    "email": "admin@gmail1.com",
+    "password": "111111",
+    "phone": "111111",
+    "confPassword": "111111",
+    "accountType": "pegawai"
+}
+
+
+###
+//FIND ALL USERS
+GET http://localhost:3002/users
+Content-Type: application/json
+
+###
+//FIND SPECIFIC USER
+GET http://localhost:3002/users/6
+Content-Type: application/json
+
+###
+//DESTROY USER
+DELETE http://localhost:3002/users/7
+
+###
+//LOGIN USER ADMIN
+
+POST http://localhost:3002/login
+Content-Type: application/json
+
+{
+    "email": "febriandaru@gmail.com",
+    "password": "111111"
+}
+###
+//LOGIN USER CUSTOMER
+
+POST http://localhost:3002/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "111111"
+}
+
+###
+//ME
+GET http://localhost:3002/me
+
+
+###
+//LOGOUT
+DELETE http://localhost:3002/logout
