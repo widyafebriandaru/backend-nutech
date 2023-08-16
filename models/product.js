@@ -22,8 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     nama_barang: {
       type: DataTypes.STRING,
-      allowNull: false},
-      unique: true,
+      allowNull: false,
+      unique: true,},
     foto_barang: {
       type: DataTypes.STRING,
       allowNull: false},
