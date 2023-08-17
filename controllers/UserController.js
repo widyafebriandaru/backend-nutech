@@ -43,7 +43,11 @@ const createUser = async(req, res) =>{
       });
       res.status(201).json({msg: "Register Berhasil"});
     } catch (error) {
-      res.status(400).json({msg: error.message});
+      if (error.name === "SequelizeUniqueConstraintError") {
+        res.status(400).json({ error: "Email sudah teregister, coba email lain" });
+      } else {
+        res.status(500).json({ msg: error.message });
+      }
     }
   }
 

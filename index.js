@@ -12,14 +12,17 @@ const session = require("express-session");
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 
+dotenv.config();
 const app = express();
 
-dotenv.config();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  credentials: true,
+  origin: 'http://localhost:5173'
+}));
 app.use(express.urlencoded());
 app.use(express.json());
 
@@ -41,11 +44,7 @@ app.use(products);
 app.use(user);
 app.use(auth);
 
-const PORT = process.env.PORT || 3002;
-
-
-app.listen(PORT, (e) => {
-  if (e) throw e;
-
-  console.log(`Server is running on PORT : ${PORT}`);
+app.listen(3002, () => {
+  console.clear();
+  console.debug("Server running on port http://localhost:3002");
 });
