@@ -98,7 +98,7 @@ const deleteProduct = async (req, res) => {
       },
     });
     if (!product) return res.status(404).json({ msg: "Data tidak ditemukan" });
-    if (req.accountType === "Admin") {
+    if (req.accountType !== "Admin") {
       await db.product.destroy({
         where: {
           id: product.id,

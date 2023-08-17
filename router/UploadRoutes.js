@@ -3,7 +3,7 @@ const multer = require("multer");
 const path = require("path");
 const {
   uploadController,
-  updateProductImage,
+  updateProductImage, deleteImage,
 } = require("../controllers/UploadImageController");
 
 const router = express.Router();

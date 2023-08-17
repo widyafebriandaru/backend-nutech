@@ -1,3 +1,8 @@
+const fs = require("fs");
+const path = require("path");
+const { promisify } = require("util");
+const unlinkAsync = promisify(fs.unlink);
+
 const uploadController = async (req, res) => {
   try {
     let finalImageURL =
@@ -47,6 +52,7 @@ const updateProductImage = async (req, res) => {
     res.status(500).json({ msg: error.message });
   }
 };
+
 
 module.exports = {
   uploadController: uploadController,

@@ -18,8 +18,8 @@ PATCH  http://localhost:3002/products/9
 Content-Type: application/json
 
 {
-  "nama_barang": "New Product3",
-  "foto_barang": "product.jpg",
+  "nama_barang": "New Product5",
+  "foto_barang": "product.png",
   "harga_beli": 100,
   "harga_jual": 150,
   "stok": 10
@@ -34,7 +34,7 @@ Content-Type: application/json
 ###
 // DELETE PRODUCT
 
-DELETE http://localhost:3002/products/5
+DELETE http://localhost:3002/products/12
 
 //------------------------------------------PRODUCT END
 
