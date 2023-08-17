@@ -65,7 +65,7 @@ const updateProduct = async (req, res) => {
       harga_jual,
       stok,
     } = req.body;
-    if (req.accountType === "Admin") {
+    if (req.accountType !== "") {
       await db.product.update(
         {
           nama_barang: nama_barang,

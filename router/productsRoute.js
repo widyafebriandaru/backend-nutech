@@ -6,6 +6,6 @@ const { verifyUser, adminOnly } = require("../middleware/AuthUser");
 router.post("/products", createProduct);
 router.get("/products", getAllProducts);
 router.delete("/products/:id",verifyUser,adminOnly, deleteProduct );
-router.patch("/products/:id",verifyUser,updateProduct);
+router.patch("/products/:id", verifyUser, updateProduct);
 
 module.exports = router;

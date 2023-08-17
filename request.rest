@@ -14,7 +14,7 @@ Content-Type: application/json
 ###
 // UPDATE PRODUCT
 
-PATCH  http://localhost:3002/products/3
+PATCH  http://localhost:3002/products/20
 Content-Type: application/json
 
 {
