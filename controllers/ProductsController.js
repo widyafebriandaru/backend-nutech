@@ -65,7 +65,7 @@ const updateProduct = async (req, res) => {
       harga_jual,
       stok,
     } = req.body;
-    if (req.accountType === "Admin") {
+    if (req.accountType !== "") {
       await db.product.update(
         {
           nama_barang: nama_barang,
@@ -81,7 +81,7 @@ const updateProduct = async (req, res) => {
         }
       );
     } else {
-      return res.status(403).json({ msg: "Akses terlarang" });
+      return res.status(403).json({ msg: "Mohon Login" });
     }
     res.status(200).json({ msg: "Product updated successfuly" });
   } catch (error) {
