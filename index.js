@@ -2,8 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
-const session = require("express-session");
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const { sequelize } = require("./models");
 const uploadRoutes = require("./router/UploadRoutes");
 const products = require("./router/productsRoute")
@@ -19,18 +17,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use(session({
-  secret: process.env.SESS_SECRET,
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize,
-    tableName: 'Sessions'
-  }),
-  cookie: {
-      secure: 'auto'
-  }
-}));
 
 app.use(uploadRoutes);
 app.use(products);

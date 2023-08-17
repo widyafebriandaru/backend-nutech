@@ -5,7 +5,8 @@ const { get } = require("../router/UploadRoutes");
 //CREATE NEW PRODUCT
 
 const createProduct = async (req, res) => {
-  const { nama_barang, foto_barang, harga_beli, harga_jual, stok } = req.body;
+  const { nama_barang, harga_beli, harga_jual, stok, foto_barang } = req.body;
+
   try {
     await db.product.create({
       nama_barang: nama_barang,
@@ -17,7 +18,7 @@ const createProduct = async (req, res) => {
     res.status(201).json({ msg: "Produk berhasil dibuat" });
   } catch (error) {
     if (error.name === "SequelizeUniqueConstraintError") {
-      res.status(400).json({ error: "Nama barang sudah dipakai, coba nama lain"})
+      res.status(400).json({ error: "Nama barang sudah dipakai, coba nama lain" });
     } else {
       res.status(500).json({ msg: error.message });
     }

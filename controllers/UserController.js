@@ -31,7 +31,7 @@ const getUserById = async(req, res) =>{
 
   //Create New User
 const createUser = async(req, res) =>{
-    const {name, email, password, confPassword, accountType} = req.body;
+    const {name, email, password, confPassword} = req.body;
     if(password !== confPassword) return res.status(400).json({msg: "Password tidak matching"});
     const hashPassword = await argon2.hash(password);
     try {
@@ -39,7 +39,7 @@ const createUser = async(req, res) =>{
         name: name,
         email: email,
         password: hashPassword,
-        accountType: accountType,
+        accountType: "Pegawai",
       });
       res.status(201).json({msg: "Register Berhasil"});
     } catch (error) {

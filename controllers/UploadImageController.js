@@ -1,18 +1,16 @@
-const path = require("path");
-const db = require("../models");
+const uploadController = async (req, res) => {
+  try {
+    let finalImageURL =
+      req.protocol +
+      "://" +
+      req.get("host") +
+      "/uploads/" +
+      req.file.filename;
 
-const uploadController = (req, res) => {
-  // save filename nya ke database
-  // return url ke user
-
-  let finalImageURL =
-    req.protocol +
-    "://" +
-    req.get("host") +
-    "/uploads/" +
-    req.file.filename;
-
-  res.json({ image: finalImageURL });
+    res.json({ image: finalImageURL });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 module.exports = uploadController;

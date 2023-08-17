@@ -2,14 +2,16 @@
 
 POST http://localhost:3002/products
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWNjb3VudFR5cGUiOiJBZG1pbiIsImlhdCI6MTY5MjIzNzg3MSwiZXhwIjoxNjkyMjQxNDcxfQ.s-QvQZhiZaeaI3uKc6XeYQ0rc1J8mKDREeg_Anmza40
 
 {
-    "nama_barang": "BUKUu",
-    "foto_barang": "tes",
-    "harga_beli": "100.000",
-    "harga_jual": "200.000",
-    "stok": "50"
+  "nama_barang": "New Product5",
+  "foto_barang": "product.jpg",
+  "harga_beli": 100,
+  "harga_jual": 150,
+  "stok": 10
 }
+
 
 ###
 // GET ALL PRODUCT
@@ -30,8 +32,8 @@ POST http://localhost:3002/users
 Content-Type: application/json
 
 {
-    "name": "testadmin1",
-    "email": "admin@gmail1.com",
+    "name": "testadmin",
+    "email": "admin@gmail.com",
     "password": "111111",
     "phone": "111111",
     "confPassword": "111111",
