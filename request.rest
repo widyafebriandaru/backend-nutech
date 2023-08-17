@@ -4,11 +4,25 @@ POST http://localhost:3002/products
 Content-Type: application/json
 
 {
-    "nama_barang": "BUKUu",
-    "foto_barang": "tes",
-    "harga_beli": "100.000",
-    "harga_jual": "200.000",
-    "stok": "50"
+  "nama_barang": "New Product1",
+  "foto_barang": "product.jpg",
+  "harga_beli": 100,
+  "harga_jual": 150,
+  "stok": 10
+}
+
+###
+// UPDATE PRODUCT
+
+PATCH  http://localhost:3002/products/20
+Content-Type: application/json
+
+{
+  "nama_barang": "New Product5",
+  "foto_barang": "product.png",
+  "harga_beli": 100,
+  "harga_jual": 150,
+  "stok": 10
 }
 
 ###
@@ -20,7 +34,7 @@ Content-Type: application/json
 ###
 // DELETE PRODUCT
 
-DELETE http://localhost:3002/products/9
+DELETE http://localhost:3002/products/3
 
 //------------------------------------------PRODUCT END
 
@@ -30,12 +44,12 @@ POST http://localhost:3002/users
 Content-Type: application/json
 
 {
-    "name": "testadmin1",
-    "email": "admin@gmail1.com",
+    "name": "testadmin",
+    "email": "admin1@gmail.com",
     "password": "111111",
     "phone": "111111",
     "confPassword": "111111",
-    "accountType": "pegawai"
+    "accountType": "Pegawai"
 }
 
 
@@ -46,7 +60,7 @@ Content-Type: application/json
 
 ###
 //FIND SPECIFIC USER
-GET http://localhost:3002/users/6
+GET http://localhost:3002/users/1
 Content-Type: application/json
 
 ###
