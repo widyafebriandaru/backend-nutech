@@ -3,7 +3,7 @@ const {createProduct, getAllProducts, getProductById, deleteProduct, updateProdu
 const router = express.Router();
 const { verifyUser, adminOnly } = require("../middleware/AuthUser");
 
-router.post("/products", createProduct);
+router.post("/products",verifyUser, createProduct);
 router.get("/products", getAllProducts);
 router.delete("/products/:id", verifyUser, adminOnly, deleteProduct );
 router.patch("/products", verifyUser, updateProduct);

@@ -5,7 +5,7 @@ Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWNjb3VudFR5cGUiOiJBZG1pbiIsImlhdCI6MTY5MjIzNzg3MSwiZXhwIjoxNjkyMjQxNDcxfQ.s-QvQZhiZaeaI3uKc6XeYQ0rc1J8mKDREeg_Anmza40
 
 {
-  "nama_barang": "New Product5",
+  "nama_barang": "New Product6",
   "foto_barang": "product.jpg",
   "harga_beli": 100,
   "harga_jual": 150,
@@ -22,7 +22,7 @@ Content-Type: application/json
 ###
 // DELETE PRODUCT
 
-DELETE http://localhost:3002/products/9
+DELETE http://localhost:3002/products/5
 
 //------------------------------------------PRODUCT END
 
@@ -37,7 +37,7 @@ Content-Type: application/json
     "password": "111111",
     "phone": "111111",
     "confPassword": "111111",
-    "accountType": "pegawai"
+    "accountType": "Pegawai"
 }
 
 
@@ -48,7 +48,7 @@ Content-Type: application/json
 
 ###
 //FIND SPECIFIC USER
-GET http://localhost:3002/users/6
+GET http://localhost:3002/users/1
 Content-Type: application/json
 
 ###
