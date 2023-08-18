@@ -12,40 +12,40 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert(
-      "products",
-      [
-        {
-          nama_barang: "kertas",
-          foto_barang: "tes",
-          harga_beli: 100.0,
-          harga_jual: 200.0,
-          stok: 50,
-        },
-        {
-          nama_barang: "Pena",
-          foto_barang: "tes",
-          harga_beli: 100.0,
-          harga_jual: 200.0,
-          stok: 50,
-        },
-        {
-          nama_barang: "Pensil",
-          foto_barang: "tes",
-          harga_beli: 100.0,
-          harga_jual: 200.0,
-          stok: 50,
-        },
-        {
-          nama_barang: "Penghapus",
-          foto_barang: "tes",
-          harga_beli: 100.0,
-          harga_jual: 200.0,
-          stok: 50,
-        },
-      ],
-      {}
-    );
+    // await queryInterface.bulkInsert(
+    //   "products",
+    //   [
+    //     {
+    //       nama_barang: "kertas",
+    //       foto_barang: "tes",
+    //       harga_beli: 100.0,
+    //       harga_jual: 200.0,
+    //       stok: 50,
+    //     },
+    //     {
+    //       nama_barang: "Pena",
+    //       foto_barang: "tes",
+    //       harga_beli: 100.0,
+    //       harga_jual: 200.0,
+    //       stok: 50,
+    //     },
+    //     {
+    //       nama_barang: "Pensil",
+    //       foto_barang: "tes",
+    //       harga_beli: 100.0,
+    //       harga_jual: 200.0,
+    //       stok: 50,
+    //     },
+    //     {
+    //       nama_barang: "Penghapus",
+    //       foto_barang: "tes",
+    //       harga_beli: 100.0,
+    //       harga_jual: 200.0,
+    //       stok: 50,
+    //     },
+    //   ],
+    //   {}
+    // );
   },
 
   async down(queryInterface, Sequelize) {

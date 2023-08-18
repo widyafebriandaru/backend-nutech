@@ -35,7 +35,7 @@ const updateProductImage = async (req, res) => {
     const finalImageURL =
       req.protocol + "://" + req.get("host") + "/uploads/" + req.file.filename;
 
-    // Update the product's foto_barang field with the new image URL
+    // Update the product's foto_barang with the new image URL
     await db.product.update(
       {
         foto_barang: finalImageURL,

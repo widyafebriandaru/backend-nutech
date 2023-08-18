@@ -23,7 +23,21 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage });
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+    cb(null, true);
+  } else {
+    cb(new Error("Only JPG and PNG files are allowed"), false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 100 * 1024, // 100KB in bytes
+  },
+  fileFilter: fileFilter,
+});
 
 router.post(`/api/upload`, upload.single("photo"), uploadController);
 router.patch("/products/:id/image", upload.single("photo"), updateProductImage);

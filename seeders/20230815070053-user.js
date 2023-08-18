@@ -26,9 +26,9 @@ module.exports = {
     const hashedAdminPassword = await hashPassword(adminPassword);
     await queryInterface.bulkInsert("users", [
       {
-        name: "Daru",
+        name: "Manajer",
         password: hashedAdminPassword,
-        email: "febriandaru@gmail.com",
+        email: "admin@gmail.com",
         accountType: "Admin",
       }
     ]);
