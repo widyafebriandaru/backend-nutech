@@ -7,6 +7,10 @@ const { get } = require("../router/UploadRoutes");
 const createProduct = async (req, res) => {
   const { nama_barang, harga_beli, harga_jual, stok, foto_barang } = req.body;
 
+  if (!Number.isInteger(harga_beli) || !Number.isInteger(harga_jual) || !Number.isInteger(stok)) {
+    return res.status(400).json({ error: "Harga beli, harga jual, and stok must be integers" });
+  }
+
   try {
     await db.product.create({
       nama_barang: nama_barang,
@@ -18,7 +22,9 @@ const createProduct = async (req, res) => {
     res.status(201).json({ msg: "Produk berhasil dibuat" });
   } catch (error) {
     if (error.name === "SequelizeUniqueConstraintError") {
-      res.status(400).json({ error: "Nama barang sudah dipakai, coba nama lain" });
+      res
+        .status(400)
+        .json({ error: "Nama barang sudah dipakai, coba nama lain" });
     } else {
       res.status(500).json({ msg: error.message });
     }
@@ -58,13 +64,10 @@ const updateProduct = async (req, res) => {
       },
     });
     if (!product) return res.status(404).json({ msg: "Data tidak ditemukan" });
-    const {
-      nama_barang,
-      foto_barang,
-      harga_beli,
-      harga_jual,
-      stok,
-    } = req.body;
+    const { nama_barang, foto_barang, harga_beli, harga_jual, stok } = req.body;
+    if (!Number.isInteger(harga_beli) || !Number.isInteger(harga_jual) || !Number.isInteger(stok)) {
+      return res.status(400).json({ error: "Harga beli, harga jual, and stok must be integers" });
+    }
     if (req.accountType !== "") {
       await db.product.update(
         {
@@ -105,11 +108,29 @@ const deleteProduct = async (req, res) => {
         },
       });
     } else {
-        return res.status(403).json({ msg: "Anda bukan admin" });
+      return res.status(403).json({ msg: "Anda bukan admin" });
     }
     res.status(200).json({ msg: "Product berhasil dihapus" });
   } catch (error) {
     res.status(500).json({ msg: error.message });
+  }
+};
+
+const searchProducts = async (req, res) => {
+  const query = req.query.query;
+
+  try {
+    const products = await db.product.findAll({
+      where: {
+        nama_barang: {
+          [db.Sequelize.Op.iLike]: `%${query}%`, // Case-insensitive search
+        },
+      },
+    });
+    res.status(200).json(products);
+  } catch (error) {
+    console.error("Error searching products:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -120,4 +141,5 @@ module.exports = {
   createProduct: createProduct,
   deleteProduct: deleteProduct,
   updateProduct: updateProduct,
+  searchProducts: searchProducts,
 };
